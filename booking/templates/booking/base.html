@@ -1,0 +1,174 @@
+{% load static %}
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+<head>
+    <script src="{% static 'js/color-modes.js'%}"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>Carousel Template · Bootstrap v5.3</title>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+
+<header data-bs-theme="dark">
+    {% include 'booking/includes/inc_menu.html' %}
+</header>
+
+
+<main>
+
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                    aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="static/7.jpg" class="d-block w-100" alt="Slide 1">
+                <div class="container">
+                    <div class="carousel-caption d-flex justify-content-center align-items-center"
+                         style="color: white; font-size: 24px; font-weight: bold;">
+                        <h1>Добро пожаловать в La Belle Époque!</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="static/6.png" class="d-block w-100" alt="Slide 1">
+                <div class="container">
+                    <div class="carousel-caption" style="color: white; font-size: 24px; font-weight: bold;">
+                        <h1>Гастрономический ужин</h1>
+                        <h2>Уникальное меню, созданное с учетом лучших <br> традиций французской кухни</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="static/5.jpeg" class="d-block w-100" alt="Slide 1">
+                <div class="container">
+                    <div class="carousel-caption text-end" style="color: white; font-size: 24px; font-weight: bold;">
+                        <h1>Винная карта</h1>
+                        <h2>В нашем ресторане представлен широкий выбор лучших французских вин, подобранных нашими
+                            сомелье</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="static/h7-G7IjfNQg.jpg" class="bd-placeholder-img rounded-circle" width="140" height="140"/>
+                <h2 class="fw-normal">Сервис высокого класса</h2>
+                <p>Высококвалифицированные сотрудники имеющие практику в лучших ресторанах столицы</p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img src="static/3002.jpg" class="bd-placeholder-img rounded-circle" width="140" height="140"/>
+                <h2 class="fw-normal"> шеф-повар <br> Виктор Баринов</h2>
+                <p>Специалист французской кухни со стажем более 20 лет. Обладатель звезды Мишлен. Амбасадор французской
+                    кухни в Москве</p>
+                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img src="static/Нагиев.jpg" class="bd-placeholder-img rounded-circle" width="140" height="140"/>
+                <h2 class="fw-normal">Дмитрий Нагиев</h2>
+                <p>Ресторатор. Кинозвезда.</p>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1">Добро пожаловать в Cloud Mone</h2>
+                <p class="lead">Ресторан La Belle Époque — это ваш личный уголок Франции в сердце города. Мы предлагаем
+                    вам погрузиться в атмосферу изысканности и уюта, где каждая деталь создана с любовью и вниманием.
+                    Наша команда профессиональных поваров с гордостью готовит классические блюда французской кухни,
+                    используя только свежие и высококачественные ингредиенты. Здесь вы сможете насладиться ароматами
+                    сыра, свежих трав и превосходного вина, а также уникальными десертами, которые станут настоящим
+                    завершением вашего гастрономического путешествия.
+
+                </p>
+            </div>
+            <style>
+                .custom-margin {
+                    margin-top: 125px; /* 20px примерно равен 2 см */
+                }
+            </style>
+
+            <div class="col-md-5">
+                <img src="static/Restoran_na_kryshe.jpg"
+                     class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto custom-margin"
+                     width="500"
+                     height="500"/>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading fw-normal lh-1">Наша цель расширить ваши представления о еде</h2>
+                <p class="lead">Во главе всего идея - расширить ваше представления о еде. Специлисты французской кухни
+                    исполнят для вас традиционные блюда. Что позволит вам прикоснуться к вековым традициям лучших
+                    кулинаров.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="static/03.jpg"
+                     class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto custom-margin"
+                     width="500"
+                     height="500"/>
+            </div>
+        </div>
+
+
+
+        <!-- /END THE FEATURETTES -->
+
+    </div><!-- /.container -->
+
+
+    <!-- FOOTER -->
+    <footer class="container">
+        <p class="float-end"><a href="#">Back to top</a></p>
+        <p>&copy; 2017–2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+</main>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
