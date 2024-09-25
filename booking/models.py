@@ -1,19 +1,17 @@
 from django.db import models
-from django.contrib.auth.models import User
-
-
-class Table(models.Model):
-    number = models.IntegerField(unique=True)
-    capacity = models.IntegerField()
-
+from config import settings
 
 class Reservation(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    table = models.ForeignKey(Table, on_delete=models.CASCADE)
-    date = models.DateField()
-    time = models.TimeField()
-    guests = models.IntegerField()
-    confirmed = models.BooleanField(default=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    table = models.IntegerField(verbose_name='стол')
+    date = models.DateField(verbose_name='дата')
+    time = models.TimeField(verbose_name='время')
+    guests = models.IntegerField(verbose_name='Количество гостей')
+    reserve = models.BooleanField(verbose_name="зарезервирован", default=True)
 
+    def __str__(self):
+        return f'{self.user}, {self.table}'
 
-
+    class Meta:
+        verbose_name = 'Резерв'
+        verbose_name_plural = 'Резервы'

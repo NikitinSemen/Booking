@@ -1,0 +1,124 @@
+{% load static %}
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+<head>
+    <script src="{% static 'js/color-modes.js' %}"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>Carousel Template · Bootstrap v5.3</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+<header data-bs-theme="dark">
+    {% include 'booking/includes/inc_menu.html' %}
+</header>
+
+<style>
+    .half-page-image {
+        width: 50%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        transform: rotate(90deg); /* Поворот изображения на 90 градусов по часовой стрелке */
+    }
+    .container-fluid {
+        padding: 20px;
+    }
+    .form-table-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .form-container, .table-container {
+        flex: 1;
+        margin: 0 10px;
+    }
+</style>
+
+<img src="{% static 'zal1.jpg' %}" alt="Description of the image" class="half-page-image">
+
+<div class="container-fluid">
+    <div class="form-table-container">
+        <div class="form-container">
+            <form class="row" method="post" enctype="multipart/form-data">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                Бронирование стола
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-success mt-3">
+                                {% if object %}
+                                Сохранить
+                                {% else %}
+                                Создать
+                                {% endif %}
+                            </button>
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="table-container">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Пользователь</th>
+                        <th>Стол</th>
+                        <th>Дата</th>
+                        <th>Время</th>
+                        <th>Гости</th>
+                        <th>Резерв</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reservation in object_list %}
+                    <tr>
+                        <td>{{ reservation.user }}</td>
+                        <td>{{ reservation.table }}</td>
+                        <td>{{ reservation.date }}</td>
+                        <td>{{ reservation.time }}</td>
+                        <td>{{ reservation.guests }}</td>
+                        <td>{{ reservation.reserve }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- /END THE FEATURETTES -->
+
+</div><!-- /.container -->
+
+<!-- FOOTER -->
+<footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2017–2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+</footer>
+</main>
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
