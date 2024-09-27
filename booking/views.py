@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -15,18 +16,18 @@ def about(request):
     return render(request, 'booking/about.html')
 
 
-class ReservationCreateView(CreateView):
+class ReservationCreateView(LoginRequiredMixin, CreateView):
     model = Reservation
     form_class = ReservationForm
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['reservations'] = Reservation.objects.all()
+        return context
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
     def get_success_url(self):
-        return reverse('booking:reservation_for', kwargs={'pk': self.object.pk})
-
-
-class ReservationUpdateView(UpdateView):
-    model = Reservation
-
-
-class ReservationListView(ListView):
-    model = Reservation
-
+        return reverse('booking:create')

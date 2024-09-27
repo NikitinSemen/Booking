@@ -1,6 +1,7 @@
 from django.db import models
 from config import settings
 
+
 class Reservation(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     table = models.IntegerField(verbose_name='стол')

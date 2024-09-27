@@ -20,7 +20,6 @@
 </head>
 
 <body>
-
 <header data-bs-theme="dark">
     {% include 'booking/includes/inc_menu.html' %}
 </header>
@@ -79,30 +78,33 @@
         <div class="table-container">
             <table class="table table-bordered">
                 <thead>
-                    <tr>
-                        <th>Пользователь</th>
-                        <th>Стол</th>
-                        <th>Дата</th>
-                        <th>Время</th>
-                        <th>Гости</th>
-                        <th>Резерв</th>
-                    </tr>
+                <tr>
+                    <th>Стол</th>
+                    <th>Дата</th>
+                    <th>Время</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {% for reservation in object_list %}
-                    <tr>
-                        <td>{{ reservation.user }}</td>
-                        <td>{{ reservation.table }}</td>
-                        <td>{{ reservation.date }}</td>
-                        <td>{{ reservation.time }}</td>
-                        <td>{{ reservation.guests }}</td>
-                        <td>{{ reservation.reserve }}</td>
-                    </tr>
-                    {% endfor %}
+                {% if reservations %}
+                {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.table }}</td>
+                    <td>{{ reservation.date|date:"D, d M " }}</td>
+                    <td>{{ reservation.time }}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="6">Нет записей для отображения.</td>
+                </tr>
+                {% endif %}
                 </tbody>
             </table>
         </div>
     </div>
+</div>
+
+</div>
 </div>
 
 <!-- /END THE FEATURETTES -->

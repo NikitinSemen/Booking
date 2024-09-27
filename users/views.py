@@ -1,9 +1,10 @@
 import string
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DetailView, TemplateView
 import secrets
 from users.forms import UserRegisterForm, UserPassForm
 from users.models import User
@@ -31,6 +32,18 @@ class UserCreateView(CreateView):
         )
         return super().form_valid(form)
 
+
+
+class UserProfileView(LoginRequiredMixin, TemplateView):
+    template_name = 'user_profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+        return context
+
+class UserDetailView(DetailView):
+    model = User
 
 def email_verification(request, token):
     user = get_object_or_404(User, token=token)

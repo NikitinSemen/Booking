@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
 <head>
-    <script src="{% static 'js/color-modes.js' %}"></script>
+    <script src="{% static 'js/color-modes.js'%}"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
     <title>Carousel Template · Bootstrap v5.3</title>
+
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
@@ -21,12 +22,10 @@
 
 <body>
 
+
 <header data-bs-theme="dark">
     {% include 'booking/includes/inc_menu.html' %}
 </header>
-
-<main>
-
 
 <div class="row">
     <div class="col-12">
@@ -35,40 +34,30 @@
                 <form method="post" enctype="multipart/form-data">
                     <div class='class-header'>
                         <h3 class="card-title">
-                            Вход
+                            Регистрация
                         </h3>
                     </div>
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <div class="d-flex justify-content-between align-items-center">
-                        <button type="submit" class="btn btn-primary rounded-pill px-4">
-                            Войти
-                        </button>
-                        <a class="btn btn-primary rounded-pill px-4" href="{% url 'users:register' %}" role="button">Регистрация</a>
-                        <a class="btn btn-primary rounded-pill px-4" href="{% url 'users:password_recovery'%}" role="button">Забыли пароль?</a>
-                    </div>
+                    <button type="submit" class="btn btn-success">
+                        Зарегистрироваться
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
+<!-- FOOTER -->
+<footer class="container">
 
-
-    <!-- /END THE FEATURETTES -->
-
-    </div><!-- /.container -->
-
-    <!-- FOOTER -->
-    <footer class="container">
-        <p class="float-end"><a href="#">Back to top</a></p>
-        <p>&copy; 2017–2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </footer>
+    <p>&copy; 2017–2024 Company, Inc. &middot;
+</footer>
 </main>
-
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
 </body>
 </html>
+
