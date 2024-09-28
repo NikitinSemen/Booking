@@ -1,0 +1,25 @@
+.container {
+    margin-top: 3cm; /* Отступ сверху на 3 см для всего контейнера */
+}
+
+.profile-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-photo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.booking-history {
+    text-align: center; /* Центрируем заголовок и таблицу */
+}
+
+.table {
+    margin: 0 auto; /* Центрируем таблицу */
+    width: 80%; /* Ширина таблицы */
+}

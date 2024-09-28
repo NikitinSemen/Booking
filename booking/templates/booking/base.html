@@ -11,7 +11,6 @@
     <meta name="generator" content="Hugo 0.122.0">
     <title>Carousel Template · Bootstrap v5.3</title>
 
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"
@@ -22,11 +21,9 @@
 
 <body>
 
-
 <header data-bs-theme="dark">
     {% include 'booking/includes/inc_menu.html' %}
 </header>
-
 
 <main>
 
@@ -77,35 +74,25 @@
         </button>
     </div>
 
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
     <div class="container marketing">
-
-        <!-- Three columns of text below the carousel -->
         <div class="row">
             <div class="col-lg-4">
                 <img src="static/h7-G7IjfNQg.jpg" class="bd-placeholder-img rounded-circle" width="140" height="140"/>
                 <h2 class="fw-normal">Сервис высокого класса</h2>
                 <p>Высококвалифицированные сотрудники имеющие практику в лучших ресторанах столицы</p>
-            </div><!-- /.col-lg-4 -->
+            </div>
             <div class="col-lg-4">
                 <img src="static/3002.jpg" class="bd-placeholder-img rounded-circle" width="140" height="140"/>
                 <h2 class="fw-normal"> шеф-повар <br> Виктор Баринов</h2>
                 <p>Специалист французской кухни со стажем более 20 лет. Обладатель звезды Мишлен. Амбасадор французской
                     кухни в Москве</p>
-            </div><!-- /.col-lg-4 -->
+            </div>
             <div class="col-lg-4">
                 <img src="static/Нагиев.jpg" class="bd-placeholder-img rounded-circle" width="140" height="140"/>
                 <h2 class="fw-normal">Дмитрий Нагиев</h2>
                 <p>Ресторатор. Кинозвезда.</p>
-            </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
-
-
-        <!-- START THE FEATURETTES -->
+            </div>
+        </div>
 
         <hr class="featurette-divider">
 
@@ -118,7 +105,6 @@
                     используя только свежие и высококачественные ингредиенты. Здесь вы сможете насладиться ароматами
                     сыра, свежих трав и превосходного вина, а также уникальными десертами, которые станут настоящим
                     завершением вашего гастрономического путешествия.
-
                 </p>
             </div>
             <style>
@@ -134,16 +120,57 @@
                      height="500"/>
             </div>
         </div>
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1">Проведите незабываемый вечер в уютном зале</h2>
+                <p class="lead">В нашем заведении вы можете пообедать со своей семьей, поужинать со своей второй
+                    половинкой под живую музыку. Также мы проводим банкеты, свадьбы, званные ужины. Предоставляем
+                    большой ассортимент блюд традиционной французской кухни. Забронируйте стол в нашем ресторане и мы
+                    гарантируем вам незабываемые гастрономические впечатления.
+                </p>
+            </div>
+            <style>
+                .custom-margin {
+                    margin-top: 125px; /* 20px примерно равен 2 см */
+                }
+            </style>
+
+            <div class="col-md-5">
+                <img src="static/фото зала.jpg"
+                     class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto custom-margin"
+                     width="500"
+                     height="500"/>
+            </div>
+        </div>
 
         <hr class="featurette-divider">
 
-        <
+        {% if user.is_authenticated %}
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Контактная информация</h2>
+                <p>Адрес: г. Москва, ул. Пушкина, д. 10</p>
+                <p>Телефон: +7 (123) 456-78-90</p>
+                <p>Email: info@labelleepoque.ru</p>
+            </div>
+            <div class="col-md-6">
+                <h2>Обратная связь</h2>
+                <form method="post" action="{% url 'booking:contact' %}">
+                    {% csrf_token %}
 
-
-        <!-- /END THE FEATURETTES -->
-
+                    <div class="mb-3">
+                        <label for="email" class="form-label">{{ user.email }}</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Сообщение</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+            </div>
+        </div>
+        {% endif %}
     </div><!-- /.container -->
-
 
     <!-- FOOTER -->
     <footer class="container">

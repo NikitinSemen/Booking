@@ -6,6 +6,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView, DetailView, TemplateView
 import secrets
+
+from booking.models import Reservation
 from users.forms import UserRegisterForm, UserPassForm
 from users.models import User
 from config.settings import EMAIL_HOST_USER
@@ -33,17 +35,21 @@ class UserCreateView(CreateView):
         return super().form_valid(form)
 
 
-
 class UserProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'user_profile.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['user'] = self.request.user
+        context['reservations'] = Reservation.objects.filter(user=self.request.user)
         return context
 
-class UserDetailView(DetailView):
+
+class UserUpdateView(UpdateView):
     model = User
+    form_class = UserRegisterForm
+    success_url = reverse_lazy('users:user_profile')
+
 
 def email_verification(request, token):
     user = get_object_or_404(User, token=token)

@@ -76,6 +76,12 @@
             </form>
         </div>
         <div class="table-container">
+            <form method="get" class="mb-3">
+                <div class="input-group">
+                    <input type="date" name="date_filter" class="form-control" value="{{ request.GET.date_filter }}">
+                    <button type="submit" class="btn btn-primary">Фильтровать</button>
+                </div>
+            </form>
             <table class="table table-bordered">
                 <thead>
                 <tr>
