@@ -1,5 +1,6 @@
 # created by virtualenv automatically
 .venv/bin
+.env
 # created by virtualenv automatically
 # Byte-compiled / optimized / DLL files
 __pycache__/
