@@ -1,12 +1,10 @@
 import string
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView, DetailView, TemplateView
 import secrets
-
 from booking.models import Reservation
 from users.forms import UserRegisterForm, UserPassForm
 from users.models import User

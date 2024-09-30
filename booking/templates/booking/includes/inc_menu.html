@@ -10,10 +10,11 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'booking:about' %}">О ресторане</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'booking:create' %}">Бронирование</a>
                 </li>
-                {% if user.is_authenticated %}
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'users:user_profile' %}">Личный кабинет</a>
                 </li>

@@ -1,10 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
-from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import CreateView, UpdateView, ListView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from booking.forms import ReservationForm
 from booking.models import Reservation
 from config.settings import EMAIL_HOST_USER
@@ -18,14 +17,7 @@ def about(request):
     return render(request, 'booking/about.html')
 
 
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.mail import send_mail
-from django.shortcuts import redirect
-from django.urls import reverse
-from django.views.generic import CreateView
-from booking.forms import ReservationForm
-from booking.models import Reservation
-from config.settings import EMAIL_HOST_USER
+
 
 
 class ReservationCreateView(LoginRequiredMixin, CreateView):

@@ -41,7 +41,7 @@
             <a href="{% url 'users:update' user.pk %}"
                            class="btn btn-primary btn-sm">Изменить</a>
             <div class="profile-photo">
-                <img rc="{{ user.avatar | media_filter }}" alt="Фото профиля"
+                <img src="{{ user.avatar | media_filter }}" alt="Фото профиля"
                      style="width: 100px; height: 100px; border-radius: 50%;">
             </div>
         </div>
