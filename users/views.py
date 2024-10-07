@@ -9,6 +9,9 @@ from booking.models import Reservation
 from users.forms import UserRegisterForm, UserPassForm
 from users.models import User
 from config.settings import EMAIL_HOST_USER
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class UserCreateView(CreateView):
@@ -24,12 +27,16 @@ class UserCreateView(CreateView):
         user.save()
         host = self.request.get_host()
         url = f'http://{host}/users/email-confirm/{token}/'
-        send_mail(
-            subject='Подтверждение почты',
-            message=f'Здравствуйте, пройдите по ссылке для подтверждения почты {url}',
-            from_email=EMAIL_HOST_USER,
-            recipient_list=[user.email]
-        )
+        try:
+            send_mail(
+                subject='Подтверждение почты',
+                message=f'Здравствуйте, пройдите по ссылке для подтверждения почты {url}',
+                from_email=EMAIL_HOST_USER,
+                recipient_list=[user.email]
+            )
+        except Exception as e:
+            logger.error(f'Ошибка: {e}')
+
         return super().form_valid(form)
 
 
