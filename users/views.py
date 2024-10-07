@@ -1,4 +1,6 @@
 import string
+
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render
@@ -36,6 +38,7 @@ class UserCreateView(CreateView):
             )
         except Exception as e:
             logger.error(f'Ошибка: {e}')
+        messages.success(self.request, 'Регистрация успешна! На вашу почту отправлено сообщение для подтверждения.')
 
         return super().form_valid(form)
 
